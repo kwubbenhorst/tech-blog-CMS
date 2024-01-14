@@ -1,0 +1,23 @@
+{
+  "name": "tech-blog-cms",
+  "version": "1.0.0",
+  "description": "A full stack, from scratch build, that allows users to manage content (view, create, edit &amp; delete posts) on a tech blog. Server &amp; RESTful API w/ node.js &amp; express.js. Database w/ MySQL2 &amp; Sequelize, View templating w/ express-handlebars, security w/ dotenv &amp; bcrypt, authentication w/ express-session &amp; connect-session-sequelize. MVC architecture.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-session-sequelize": "^7.1.7",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.7.0",
+    "sequelize": "^6.35.2"
+  }
+}
