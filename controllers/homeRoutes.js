@@ -20,7 +20,8 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       posts, 
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in,
+      is_dashboard: false, 
     });
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve blog posts.' });
@@ -37,7 +38,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['text'],
+          attributes: ['text, data_created'],
           include: [
             {
               model: User,

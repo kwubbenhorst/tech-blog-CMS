@@ -1,0 +1,20 @@
+<!-- views/dashboard.handlebars -->
+<div class="row">
+  <div class="col-md-6">
+    {{#if is_dashboard}}
+      <h1>Your Dashboard</h1>
+    {{else}}
+      <h1>
+        <span role="img" aria-label="laptop">💻</span>
+        <a href="/">The Tech Blog</a>
+      </h1>
+    {{/if}}
+
+    <!-- dashboard content dynamically rendered in here -->
+
+    <button class="btn btn-primary" id="create-post-btn">Create a New Post</button>
+  </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
+

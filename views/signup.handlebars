@@ -1,9 +1,10 @@
-<!-- file rendering the view of the login form -->
+<!-- file rendering the view of the signup form -->
 <div class="row">
   <div class="col-md-6">
-    <h2>Login</h2>
-    <!-- login form -->
-    <form action="/login" method="post" class="form login-form">
+    <h2>Signup</h2>
+
+    <!-- signup form -->
+    <form action="/api/users" method="post" class="form signup-form">
       <div class="form-group">
         <label for="username">Username:</label>
         <input class="form-input" type="text" id="username" name="username" />
@@ -13,12 +14,12 @@
         <input class="form-input" type="password" id="password" name="password" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
       </div>
     </form>
-    
-    <!-- Link to switch to Signup instead -->
-    <p>Don't have an account? <a href="/signup">Signup instead</a></p>
+
+    <!-- Link to switch to Login instead -->
+    <p>Already have an account? <a href="/login">Login instead</a></p>
   </div>
 </div>
 <script src="/js/login.js"></script>

@@ -1,8 +1,8 @@
 // This file handles operations for when user hits endpoints to create, update or delete blog posts
 
 const router = require('express').Router();
-const { Post } = require('../models');
-const withAuth = require('../utils/auth');
+const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Create a new blog post
 router.post('/', withAuth, async (req, res) => {

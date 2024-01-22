@@ -3,9 +3,10 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
+const userRoutes = require('./controllers/api/userRoutes');
 const helpers = require('./utils/helpers');
 
-const sequelize = require('./config/sequelize');
+const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -38,6 +39,29 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Calling userRoutes particularly because it contains routes for signup/login functionality
+app.use(userRoutes);
+
+// Define a route for rendering the login page
+app.get('/login', (req, res) => {
+  res.render('login'); // Invoking the login.handlebars file
+});
+
+// Define a route for rendering the signup form
+app.get('/signup', (req, res) => {
+  res.render('signup'); // Invoking the login.handlebars file
+});
+
+// Define a route, triggered upon submit from either login or signup or click on dashboard navlink when logged in, for rendering the dashboard
+app.get('/dashboard', (req, res) => {
+  // Check if the user is logged in
+  const is_logged_in = req.session.logged_in;
+  // Check if the query parameter is_dashboard is present
+  const is_dashboard = req.query.is_dashboard === 'true';// Render your dashboard view
+  res.render('dashboard', { logged_in: is_logged_in, is_dashboard }); // Invoking the dashboard.handlebars file
+});
+
 
 // Routes
 app.use(routes);

@@ -25,6 +25,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', {
       posts,
       logged_in: req.session.logged_in,
+      is_dashboard: true,
     });
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve user\'s blog posts.' });

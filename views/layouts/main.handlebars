@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog CMS</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="flex-column justify-space-around">
+    <header class="display-flex justify-space-between align-center p-2">
+      <h1>
+        <span role="img" aria-label="laptop">💻</span>
+        <a href="/">The Tech Blog</a>
+      </h1>
+      <nav>
+        <a href="/">Homepage</a> |
+        <a href="/dashboard" id="dashboardLink" data-logged-in="{{logged_in}}"></a>Dashboard</a> |
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/dashboard">Your Dashboard</a> |
+        <button class="no-button" id="logout">Logout</button>
+        {{else}}
+        <a href="/login" id="loginLink">Login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+
+  <!-- Render redirect script for non-logged in users -->
+  {{#unless logged_in}}
+    <script src="/js/redirect.js"></script>
+  {{/unless}}
+</body>
+
+</html>
